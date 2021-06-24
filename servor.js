@@ -15,6 +15,7 @@ module.exports = async ({
   module = false,
   fallback = module ? 'index.js' : 'index.html',
   reload = true,
+  reloadDelay = 1000,
   static = false,
   inject = '',
   credentials,
@@ -38,6 +39,7 @@ module.exports = async ({
 
   const reloadClients = [];
   const protocol = credentials ? 'https' : 'http';
+
   /*
   const server = credentials
     ? reload
@@ -157,8 +159,12 @@ module.exports = async ({
 
   reload &&
     fileWatch(root, () => {
-      while (reloadClients.length > 0)
-        sendMessage(reloadClients.pop(), 'message', 'reload');
+      while (reloadClients.length > 0) {
+        const reloadClient = reloadClients.pop();
+        setTimeout(() => {
+          sendMessage(reloadClient, 'message', 'reload');
+        }, reloadDelay);
+      }
     });
 
   // Close socket connections on sigint

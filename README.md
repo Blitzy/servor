@@ -37,7 +37,7 @@ Most features are disabled by default but you can customize behaviour by passing
 Run as a terminal command without adding it as a dependency using `npx`:
 
 ```s
-npx servor <root> <fallback> <port>
+npx servor <root> <fallback> <port> <reloadDelay>
 ```
 
 > You can pass a GitHub repo as `<root>` using the syntax `gh:<user>/<repository>`
@@ -45,6 +45,7 @@ npx servor <root> <fallback> <port>
 - `<root>` path to serve static files from (defaults to current directory `.`)
 - `<fallback>` the file served for all non-file requests (defaults to `index.html`)
 - `<port>` what port you want to serve the files from (defaults to `8080`)
+- `<reloadDelay>` how many milliseconds to wait before sending the reload message to clients (defaults to `1000`)
 
 Optional flags passed as non-positional arguments:
 

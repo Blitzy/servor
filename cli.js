@@ -78,6 +78,7 @@ const open =
     root: args[0],
     fallback: args[1],
     port: args[2],
+    reloadDelay: args[3],
     reload: !!~process.argv.indexOf('--reload'),
     module: !!~process.argv.indexOf('--module'),
     static: !!~process.argv.indexOf('--static'),
