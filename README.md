@@ -25,7 +25,7 @@ Most features are disabled by default but you can customize behaviour by passing
 - 🗂 Serves static content like scripts, styles, images from a given directory
 - ♻️ Reloads the browser when project files get added, removed or modified
 - 🗜 Uses gzip on common filetypes like html, css, js and json
-- 🔐 Supports https and http2 with trusted self signed certificates
+- 🔐 Supports https with trusted self signed certificates
 - 🖥 Redirects all path requests to a single file for frontend routing
 - 📦 Accepts both HTML and JavaScript files as the root file for a directory
 - 🔎 Discovers freely available ports to start if the default is in use

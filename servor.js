@@ -2,7 +2,6 @@ const fs = require('fs');
 const url = require('url');
 const path = require('path');
 const http = require('http');
-const http2 = require('http2');
 const https = require('https');
 const zlib = require('zlib');
 
@@ -39,11 +38,16 @@ module.exports = async ({
 
   const reloadClients = [];
   const protocol = credentials ? 'https' : 'http';
+  /*
   const server = credentials
     ? reload
       ? (cb) => https.createServer(credentials, cb)
       : (cb) => http2.createSecureServer(credentials, cb)
     : (cb) => http.createServer(cb);
+  */
+
+  // [Blitzy] Dont use http2 secure server. ERR_HTTP2_PROTOCOL_ERROR errors occur when debugging remote devices with Chrome DevTools on http2.
+  const server = credentials ? (cb) => https.createServer(credentials, cb) : (cb) => http.createServer(cb);
 
   const livereload = reload
     ? `
